@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 	<artifactId>etl4lod-parent</artifactId>
-    <packaging>pom</packaging>
-    <version>2.0</version>
-    <name>ETL4LOD</name>
-    <description>Componentes do Kettle relacionados a Linked Data</description>
+	<packaging>pom</packaging>
+	<version>3.0</version>
+	<name>ETL4LOD</name>
+	<description>Componentes do Kettle relacionados a Linked Data</description>
 	<url>https://github.com/rogersmendonca/etl4lod.git</url>
 
 	<developers>
@@ -16,74 +16,70 @@
 			<name>Rogers Reiche de Mendonca</name>
 			<email>rogers.rj@gmail.com</email>
 			<organization>UFRJ (PPGI/GRECO)</organization>
-			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
-		</developer>		
+			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>
+		</developer>
 	</developers>
 
 	<repositories>
 		<!-- Pentaho repository. -->
-		<repository>
-			<id>pentaho-repo</id>
-			<url>http://repo.pentaho.org/artifactory/pentaho/</url>
-		</repository>
+		<!-- <repository> -->
+		<!-- <id>pentaho-repo</id> -->
+		<!-- <url>http://repo.pentaho.org/artifactory/pentaho/</url> -->
+		<!-- </repository> -->
 		<!-- Pentaho repository (third party). -->
+		<!-- <repository> -->
+		<!-- <id>pentaho-third-party</id> -->
+		<!-- <url>http://repo.pentaho.org/artifactory/third-party/</url> -->
+		<!-- </repository> -->
+
 		<repository>
-			<id>pentaho-third-party</id>
-			<url>http://repo.pentaho.org/artifactory/third-party/</url>
+			<id>pentaho-releases</id>
+			<url>http://repository.pentaho.org/artifactory/repo/</url>
 		</repository>
-		
 		<!-- Run ${basedir}/libs/maven_install_libs.bat to install the local libraries 
 			into maven local repository -->
 		<repository>
 			<id>local-repository</id>
 			<url>file://${basedir}/libs</url>
-		</repository>		
-		
+		</repository>
+
 		<!-- Rogers (07/2014) -->
 		<!-- O componente Any23 foi incorporado ao repositorio Maven Central. -->
 		<!-- Por isso, os 2 repositorios do googlecope nao sao mais necessarios. -->
-		
+
 		<!-- Specific repository for Any23 dependencies without a dedicated repository. -->
-		<!--
-		<repository>
-			<id>any23-repository-external</id>
-			<url>http://any23.googlecode.com/svn/repo-ext</url>
-		</repository>
-		-->
-		
+		<!-- <repository> <id>any23-repository-external</id> <url>http://any23.googlecode.com/svn/repo-ext</url> 
+			</repository> -->
+
 		<!-- The Any23 modules repository. -->
-		<!--
-		<repository>
-			<id>any23-repository</id>
-			<url>http://any23.googlecode.com/svn/repo</url>
-		</repository>
-		-->	
+		<!-- <repository> <id>any23-repository</id> <url>http://any23.googlecode.com/svn/repo</url> 
+			</repository> -->
 	</repositories>
-	
+
 	<properties>
 		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>		
-			
+		<maven.compiler.target>1.6</maven.compiler.target>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
-			
-		<pdi.version>4.3.0-stable</pdi.version>
-		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<pdi.version>5.2.0.0-209</pdi.version>
+		<pdi.home>C:/programas/pdi-ce-5.2.0.0-209/data-integration</pdi.home>
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
 		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>
-	
+
 	<modules>
 		<module>Annotator</module>
-        <module>DataPropertyMapping</module>
-        <module>ntriplegenerator</module>
-        <module>ObjectPropertyMapping</module>
-        <module>SparqlEndpoint</module>
-		<module>SparqlRunQuery</module>		
-		<module>SparqlUpdateOutput</module>				
-    </modules>
-	
-    <build>
+		<module>DataPropertyMapping</module>
+		<module>ntriplegenerator</module>
+		<module>ObjectPropertyMapping</module>
+		<module>SparqlEndpoint</module>
+		<module>SparqlRunQuery</module>
+		<module>SparqlUpdateOutput</module>
+	</modules>
+
+	<build>
 		<plugins>
 			<!-- mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs -->
 			<!-- http://maven.apache.org/plugins/maven-eclipse-plugin/examples/attach-library-sources.html -->
@@ -106,11 +102,11 @@
 					<target>${maven.compiler.target}</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>						
+			</plugin>
 		</plugins>
 	</build>
-	  
-	<dependencies>	
+
+	<dependencies>
 		<!-- Kettle dependencies (start) -->
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
@@ -142,7 +138,7 @@
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
 			<artifactId>kettle-test</artifactId>
-			<version>4.4.3.3</version>
+			<version>4.4.3.1</version>
 		</dependency>
 
 		<dependency>
@@ -151,28 +147,38 @@
 			<version>${pdi.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>swt</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho</groupId>
+			<artifactId>metastore</artifactId>
+			<version>${pdi.version}</version>
+		</dependency>
 		<!-- Kettle dependencies (end) -->
-		
+
 		<!-- Non-Kettle dependencies (start) -->
 		<dependency>
 			<groupId>bsh</groupId>
 			<artifactId>bsh</artifactId>
 			<version>1.3.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>de.fuberlin.wiwiss.silk</groupId>
 			<artifactId>silk-core</artifactId>
 			<version>2.5</version>
-		</dependency>		
+		</dependency>
 		<!-- Non-Kettle dependencies (end) -->
-		
+
 		<!-- local dependencies -->
-		<!-- Obs: To install local dependencies, run maven_install_local_libs.bat -->		
+		<!-- Obs: To install local dependencies, run maven_install_local_libs.bat -->
 		<dependency>
 			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 			<artifactId>KettlePluginTools</artifactId>
 			<version>1.0</version>
-		</dependency>			
+		</dependency>
 	</dependencies>
 </project>
