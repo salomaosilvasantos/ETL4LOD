@@ -21,8 +21,11 @@
 	</developers>
 
 	<repositories>
+	
+	
 		<!-- Pentaho repository. -->
-
+        
+        
 		<repository>
 			<id>pentaho-releases</id>
 			<url>http://repository.pentaho.org/artifactory/repo/</url>
@@ -33,6 +36,14 @@
 			<id>local-repository</id>
 			<url>file://${basedir}/libs</url>
 		</repository>
+		<repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </repository>
+		
 	</repositories>
 
 	<properties>
@@ -42,8 +53,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<pdi.version>5.3.0.0-213</pdi.version>
-		<pdi.home>/home/salomao/Documentos/pdi-ce-5.3.0.0-213/data-integration</pdi.home>
+		<pdi.version>5.4.0.1-130</pdi.version>
+		<pdi.home>/home/salomao/Documentos/pdi-ce-5.4.0.1-130/data-integration</pdi.home>
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
 		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>
